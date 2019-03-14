@@ -28,8 +28,8 @@
 <head>
     <title>Dashbuilder</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="org.uberfire.DemoShowcase/css/patternfly.min.css">
-    <link rel="stylesheet" href="org.uberfire.DemoShowcase/css/patternfly-additions.min.css">
+    <link rel="stylesheet" href="org.uberfire.editor.StandaloneEditor/css/patternfly.min.css">
+    <link rel="stylesheet" href="org.uberfire.editor.StandaloneEditor/css/patternfly-additions.min.css">
 </head>
 
 <body>

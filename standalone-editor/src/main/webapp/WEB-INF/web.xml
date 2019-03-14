@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
           http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         version="2.5">
+  version="2.5">
 
   <filter>
     <filter-name>request-capture</filter-name>
@@ -16,10 +16,24 @@
   </filter-mapping>
 
   <filter>
+    <filter-name>HTTP Basic Auth Filter</filter-name>
+    <filter-class>org.uberfire.ext.security.server.BasicAuthSecurityFilter</filter-class>
+    <init-param>
+      <param-name>realmName</param-name>
+      <param-value>Demo Realm</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>HTTP Basic Auth Filter</filter-name>
+    <url-pattern>/rest/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
     <filter-name>Avoid Host Page Cache</filter-name>
     <filter-class>org.uberfire.ext.security.server.CacheHeadersFilter</filter-class>
   </filter>
-  
+
   <filter-mapping>
     <filter-name>Avoid Host Page Cache</filter-name>
     <url-pattern>/index.html</url-pattern>
@@ -44,7 +58,7 @@
     <filter-name>GWT Locale Filter</filter-name>
     <url-pattern>/index.html</url-pattern>
   </filter-mapping>
-  
+
   <filter>
     <filter-name>UberFire Security Headers Filter</filter-name>
     <filter-class>org.uberfire.ext.security.server.SecureHeadersFilter</filter-class>
@@ -81,14 +95,21 @@
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
 
+  <servlet-mapping>
+    <servlet-name>javax.ws.rs.core.Application</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+
+
   <login-config>
     <auth-method>FORM</auth-method>
     <form-login-config>
       <form-login-page>/login.jsp</form-login-page>
-      <form-error-page>/login.jsp?message=Login failed. Please try again.</form-error-page>
+      <form-error-page>/login.jsp?message=Login failed. Please try
+        again.</form-error-page>
     </form-login-config>
   </login-config>
-  
+
   <servlet>
     <servlet-name>ErraiServlet</servlet-name>
     <servlet-class>org.jboss.errai.bus.server.servlet.DefaultBlockingServlet</servlet-class>
@@ -119,7 +140,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>UberfireFileUploadServlet</servlet-name>
-    <url-pattern>/org.uberfire.DemoShowcase/defaulteditor/upload/*</url-pattern>
+    <url-pattern>/org.uberfire.editor.StandaloneEditor/defaulteditor/upload/*</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -136,7 +157,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>UberfireFileDownloadServlet</servlet-name>
-    <url-pattern>/org.uberfire.DemoShowcase/defaulteditor/download/*</url-pattern>
+    <url-pattern>/org.uberfire.editor.StandaloneEditor/defaulteditor/download/*</url-pattern>
   </servlet-mapping>
 
   <!-- Security roles -->
@@ -155,16 +176,16 @@
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>openResources</web-resource-name>
-      <url-pattern>/org.uberfire.DemoShowcase/patternfly/*</url-pattern>
+      <url-pattern>/org.uberfire.editor.StandaloneEditor/patternfly/*</url-pattern>
     </web-resource-collection>
   </security-constraint>
 
-  <!-- Default security constraints.-->
+  <!-- Default security constraints. -->
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>default</web-resource-name>
       <url-pattern>/index.html</url-pattern>
-      <url-pattern>/org.uberfire.DemoShowcase/*</url-pattern>
+      <url-pattern>/org.uberfire.editor.StandaloneEditor/*</url-pattern>
       <url-pattern>*.erraiBus</url-pattern>
       <url-pattern>/plugins/*</url-pattern>
     </web-resource-collection>
@@ -174,13 +195,13 @@
     </auth-constraint>
   </security-constraint>
 
-  <!-- Upload/Download servlet security constraints.-->
+  <!-- Upload/Download servlet security constraints. -->
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>download</web-resource-name>
-      <url-pattern>/org.uberfire.DemoShowcase/archive</url-pattern>
-      <url-pattern>/org.uberfire.DemoShowcase/defaulteditor/upload/*</url-pattern>
-      <url-pattern>/org.uberfire.DemoShowcase/defaulteditor/download/*</url-pattern>
+      <url-pattern>/org.uberfire.editor.StandaloneEditor/archive</url-pattern>
+      <url-pattern>/org.uberfire.editor.StandaloneEditor/defaulteditor/upload/*</url-pattern>
+      <url-pattern>/org.uberfire.editor.StandaloneEditor/defaulteditor/download/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
       <role-name>admin</role-name>
@@ -192,9 +213,9 @@
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>public</web-resource-name>
-      <url-pattern>/org.uberfire.DemoShowcase/css/*</url-pattern>
-      <url-pattern>/org.uberfire.DemoShowcase/fonts/*</url-pattern>
-      <url-pattern>/org.uberfire.DemoShowcase/img/*</url-pattern>
+      <url-pattern>/org.uberfire.editor.StandaloneEditor/css/*</url-pattern>
+      <url-pattern>/org.uberfire.editor.StandaloneEditor/fonts/*</url-pattern>
+      <url-pattern>/org.uberfire.editor.StandaloneEditor/img/*</url-pattern>
     </web-resource-collection>
   </security-constraint>
 
@@ -206,5 +227,5 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  
+
 </web-app>

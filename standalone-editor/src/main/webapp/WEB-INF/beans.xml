@@ -2,6 +2,14 @@
 <beans xmlns="http://xmlns.jcp.org/xml/ns/javaee" bean-discovery-mode="all">
     <scan>
     <!-- These exclusions were added by Errai to avoid deploying client-side classes to the server -->
+    <exclude name = "org.uberfire.editor.client.local.perspectives.MainPerspective" />
+    <exclude name = "org.uberfire.editor.client.local.perspectives.MainPerspectiveActivity" />
+    <exclude name = "org.uberfire.editor.client.local.screens.EditorPresenter$View" />
+    <exclude name = "org.uberfire.editor.client.local.screens.EditorPresenter$2" />
+    <exclude name = "org.uberfire.editor.client.local.screens.EditorPresenterActivity" />
+    <exclude name = "org.uberfire.editor.client.local.screens.EditorPresenter$1" />
+    <exclude name = "org.uberfire.editor.client.local.screens.EditorPresenter" />
+    <exclude name = "org.uberfire.editor.client.local.screens.EditorView" />
     <!-- End of Errai exclusions -->
 
         <exclude name="org.hibernate.validator.**"/>

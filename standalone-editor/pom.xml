@@ -298,18 +298,6 @@
       </exclusions>
     </dependency>
 
-    <dependency>
-      <groupId>org.gwtbootstrap3</groupId>
-      <artifactId>gwtbootstrap3</artifactId>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.gwtbootstrap3</groupId>
-      <artifactId>gwtbootstrap3-extras</artifactId>
-      <scope>provided</scope>
-    </dependency>
-
     <!-- Uberfire SSH -->
     <dependency>
       <groupId>org.uberfire</groupId>
@@ -318,6 +306,7 @@
     <dependency>
       <groupId>org.uberfire</groupId>
       <artifactId>uberfire-ssh-client</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.uberfire</groupId>
@@ -356,6 +345,16 @@
     <dependency>
       <groupId>org.jboss.errai</groupId>
       <artifactId>errai-security-server</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.jboss.resteasy</groupId>
+          <artifactId>resteasy-jaxrs</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.jboss.resteasy</groupId>
+          <artifactId>resteasy-cdi</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -363,7 +362,6 @@
       <artifactId>errai-security-client</artifactId>
       <scope>provided</scope>
       <exclusions>
-        <!-- Collides with org.jboss.spec.javax.el:jboss-el-api_2.2_spec -->
         <exclusion>
           <groupId>javax.el</groupId>
           <artifactId>el-api</artifactId>
@@ -389,7 +387,17 @@
 
     <dependency>
       <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-cdi-shared</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
       <artifactId>errai-cdi-jboss</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-data-binding</artifactId>
     </dependency>
 
     <dependency>
@@ -481,7 +489,7 @@
           <logLevel>INFO</logLevel>
           <noServer>false</noServer>
           <server>org.jboss.errai.cdi.server.gwt.EmbeddedWildFlyLauncher</server>
-          <module>org.uberfire.FastCompiledDemoShowcase</module>
+          <module>org.uberfire.editor.FastCompiledStandaloneEditor</module>
           <disableCastChecking>true</disableCastChecking>
           <runTarget>index.html</runTarget>
           <hostedWebapp>src/main/webapp</hostedWebapp>
@@ -522,7 +530,7 @@
             <compileSourcesArtifact>org.uberfire:uberfire-backend-api</compileSourcesArtifact>
             <compileSourcesArtifact>org.uberfire:uberfire-ssh-client</compileSourcesArtifact>
             <compileSourcesArtifact>org.uberfire:uberfire-ssh-api</compileSourcesArtifact>
-            
+
             <!-- UberFire Security Management -->
             <compileSourcesArtifact>org.uberfire:uberfire-security-management-api</compileSourcesArtifact>
             <compileSourcesArtifact>org.uberfire:uberfire-security-management-client</compileSourcesArtifact>
@@ -532,7 +540,11 @@
             <!-- Uberfire Experimentals -->
             <compileSourcesArtifact>org.uberfire:uberfire-experimental-api</compileSourcesArtifact>
             <compileSourcesArtifact>org.uberfire:uberfire-experimental-client</compileSourcesArtifact>
-            
+
+            <!-- Errai JAX-RS -->
+            <compileSourcesArtifact>org.jboss.errai:errai-jaxrs-client</compileSourcesArtifact>
+
+
           </compileSourcesArtifacts>
         </configuration>
         <executions>
@@ -569,7 +581,7 @@
             <fileset>
               <directory>${basedir}</directory>
               <includes>
-                <include>src/main/webapp/org.uberfire.FastCompiledDemoShowcase/</include>
+                <include>src/main/webapp/org.uberfire.editor.StandaloneEditor/</include>
                 <include>src/main/webapp/WEB-INF/classes/</include>
                 <include>src/main/webapp/WEB-INF/deploy/</include>
                 <include>src/main/webapp/WEB-INF/lib/</include>
@@ -612,7 +624,6 @@
 
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>2.6</version>
         <executions>
           <execution>
             <id>copy-resources</id>

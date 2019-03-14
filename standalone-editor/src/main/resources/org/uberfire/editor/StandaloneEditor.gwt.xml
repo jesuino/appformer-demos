@@ -11,8 +11,10 @@
   <inherits name="org.uberfire.UberfireJS"/>
   <inherits name="org.uberfire.UberfireBackend"/>
   <inherits name="org.uberfire.UberfireWorkbenchBackend"/>
-  <inherits name='org.uberfire.ext.widgets.common.UberfireWidgetsCommons'/>
-
+  
+  <!--  For Ace Editor -->
+  <inherits name="org.uberfire.ext.widgets.common.UberfireWidgetsCommons"/>
+  
   <!--  Preferences -->
   <inherits name="org.uberfire.ext.preferences.UberfirePreferences"/>  
   
@@ -22,8 +24,8 @@
   <inherits name="org.uberfire.experimental.UberfireExperimentalAPI"/>
   <inherits name="org.uberfire.experimental.UberfireExperimentalClient"/>
   
+  
   <!-- Specify the paths for translatable code -->
   <source path='client'/>
-  <source path='shared'/>
 
 </module>

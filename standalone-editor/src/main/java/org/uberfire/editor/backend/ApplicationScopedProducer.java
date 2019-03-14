@@ -1,4 +1,4 @@
-package org.uberfire.demo.backend;
+package org.uberfire.editor.backend;
 
 import org.jboss.errai.security.shared.api.identity.User;
 import org.jboss.errai.security.shared.service.AuthenticationService;
