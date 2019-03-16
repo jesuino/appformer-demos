@@ -1,4 +1,4 @@
-Demo Web App
+Standalone Editor
 --
 
-Smallest Web App using Uberfire APIs. Can be used as an archetype for new apps.
+Microservice Standalone editor that can edit files from a local git repository.
