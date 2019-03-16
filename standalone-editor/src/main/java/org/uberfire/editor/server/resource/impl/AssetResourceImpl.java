@@ -51,4 +51,5 @@ public class AssetResourceImpl implements AssetResource {
         System.out.println(content);
         return service.saveAsset(path, content);
     }
+    
 }

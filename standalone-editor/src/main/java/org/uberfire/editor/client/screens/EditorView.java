@@ -61,6 +61,7 @@ public class EditorView implements EditorPresenter.View, IsElement {
         aceEditor.startEditor();
         aceEditor.setTheme(AceEditorTheme.CHROME);
         aceEditor.setAutocompleteEnabled(true);
+        btnSave.disabled = true;
         this.getContentLocationAndLoad();
     }
 
@@ -71,6 +72,7 @@ public class EditorView implements EditorPresenter.View, IsElement {
 
     @Override
     public void setContent(String type, String content) {
+        btnSave.disabled = false;
         aceEditor.getElement().getStyle().setOpacity(1.0);
         aceEditor.setReadOnly(false);
         aceEditor.setText(content);
@@ -83,6 +85,7 @@ public class EditorView implements EditorPresenter.View, IsElement {
         try {
             aceEditor.getElement().getStyle().setOpacity(0.4);
             aceEditor.setReadOnly(true);
+            btnSave.disabled = true;
             presenter.saveContent(aceEditor.getText());
         } catch (RequestException e) {
             Window.alert("Error saving content: " + e.getMessage());
@@ -106,5 +109,11 @@ public class EditorView implements EditorPresenter.View, IsElement {
         }
     }
 
+    @Override
+    public void showError(String message) {
+        Window.alert(message);
+        aceEditor.setReadOnly(true);
+        btnSave.disabled = true;
+    }
 
 }

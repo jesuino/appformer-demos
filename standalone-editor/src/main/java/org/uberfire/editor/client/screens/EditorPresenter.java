@@ -47,12 +47,18 @@ public class EditorPresenter {
     
     public interface View extends UberElemental<EditorPresenter> {
         void setContent(String type, String content);
+
+        /**
+         * @param string
+         */
+        void showError(String string);
     }
 
     @Inject
     private View view;
     
-    private AssetContent assetContent;
+
+    private String loadedAssetLocation;
     
     @PostConstruct
     public void init() {
@@ -74,26 +80,8 @@ public class EditorPresenter {
      * @throws RequestException 
      */
     public void loadAsset(String location) throws RequestException {
-        String assetURI = buildAssetURI(location);
-        RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, assetURI);
-        builder.sendRequest(null, new RequestCallback() {
-
-            @Override
-            public void onResponseReceived(Request request, Response response) {
-                DomGlobal.console.log(response);
-                JSONValue value = JSONParser.parseStrict(response.getText());
-                String content = value.isObject().get("content").isString().stringValue();
-                String type = value.isObject().get("extension").isString().stringValue();
-                getView().setContent(type, content);
-                assetContent = new AssetContent(type, content, location);
-            }
-            
-            @Override
-            public void onError(Request request, Throwable exception) {
-                Window.alert("Error retrieving asset: " + location);
-                
-            }
-        });
+        loadedAssetLocation = location;
+        sendRequest(loadedAssetLocation, null, "not able to load asset");
 
     }
 
@@ -104,13 +92,28 @@ public class EditorPresenter {
      * @throws RequestException 
      */
     public void saveContent(String text) throws RequestException {
-        String assetURI = buildAssetURI(assetContent.getLocation());
-        RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, assetURI);
+        sendRequest(loadedAssetLocation, text, "not able to save asset");
+    }
+
+    private void sendRequest(String assetLocation, String text, String errorMessage) throws RequestException {
+        String error = "Error '" +  errorMessage 
+                                 + "' when handling asset " 
+                                 + assetLocation;
+        String assetURI = buildAssetURI(assetLocation);
+        RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, assetURI);
+        
+        if (text != null) {
+            builder = new RequestBuilder(RequestBuilder.POST, assetURI);
+        }
+        
         builder.sendRequest(text, new RequestCallback() {
             
             @Override
             public void onResponseReceived(Request request, Response response) {
-                DomGlobal.console.log(response);
+                if (response.getStatusCode() == Response.SC_NOT_FOUND) {
+                    getView().showError(error);
+                    return;
+                }
                 JSONValue value = JSONParser.parseStrict(response.getText());
                 String content = value.isObject().get("content").isString().stringValue();
                 String type = value.isObject().get("extension").isString().stringValue();
@@ -119,11 +122,9 @@ public class EditorPresenter {
             
             @Override
             public void onError(Request request, Throwable exception) {
-                Window.alert("Error saving content on asset " + assetContent.getLocation());
-                
+                getView().showError(error);
             }
         });
-        
     }
     
     private String buildAssetURI(String location) {
