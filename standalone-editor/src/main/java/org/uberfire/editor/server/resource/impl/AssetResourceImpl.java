@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.uberfire.editor.backend.resource.impl;
+package org.uberfire.editor.server.resource.impl;
 
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import org.uberfire.editor.backend.service.AssetService;
-import org.uberfire.editor.client.shared.AssetResource;
-import org.uberfire.editor.client.shared.model.AssetContent;
+import org.uberfire.editor.server.service.AssetService;
+import org.uberfire.editor.shared.AssetResource;
+import org.uberfire.editor.shared.model.AssetContent;
 
 /**
  * Implementation that uses uberfire IO API

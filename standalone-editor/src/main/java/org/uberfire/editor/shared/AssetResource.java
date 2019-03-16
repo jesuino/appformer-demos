@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.uberfire.editor.client.shared;
+package org.uberfire.editor.shared;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import org.uberfire.editor.client.shared.model.AssetContent;
+import org.uberfire.editor.shared.model.AssetContent;
 
 /**
  *  Provide access to assets anywhere in a filesystem

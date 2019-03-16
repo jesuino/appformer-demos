@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.uberfire.editor.client.shared.model;
+package org.uberfire.editor.shared.model;
 
 import org.jboss.errai.common.client.api.annotations.Portable;
 

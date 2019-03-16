@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.uberfire.editor.client.local.perspectives;
+package org.uberfire.editor.client.perspectives;
 
 import javax.enterprise.context.ApplicationScoped;
 

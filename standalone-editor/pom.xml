@@ -22,10 +22,10 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <version.com.google.gwt>2.8.2</version.com.google.gwt>
     <errai.version>4.6.0-SNAPSHOT</errai.version>
-
     <kie.version>7.19.0-SNAPSHOT</kie.version>
     <uberfire.version>2.16.0-SNAPSHOT</uberfire.version>
     <version.org.wildfly.gwt.sdm>14.0.1.Final</version.org.wildfly.gwt.sdm>
+    <version.org.wildfly.swarm>2018.3.3</version.org.wildfly.swarm>
     <!-- Add the absolute path for $JBOSS_HOME below to manage another instance -->
     <errai.jboss.home>${project.build.directory}/wildfly-${version.org.wildfly.gwt.sdm}</errai.jboss.home>
   </properties>
@@ -39,6 +39,13 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-bom</artifactId>
+        <version>${kie.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>      
       <dependency>
         <groupId>org.uberfire</groupId>
         <artifactId>uberfire-bom</artifactId>
@@ -471,6 +478,12 @@
       <groupId>com.google.elemental2</groupId>
       <artifactId>elemental2-dom</artifactId>
     </dependency>
+    
+    <!-- For security in swarm/thorntail -->
+   <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-security</artifactId>
+    </dependency>
 
   </dependencies>
 
@@ -640,6 +653,54 @@
                 </resource>
               </resources>
             </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>wildfly-swarm-plugin</artifactId>
+        <version>${version.org.wildfly.swarm}</version>
+        <configuration>
+          <fractionDetectMode>never</fractionDetectMode>
+          <fractions>
+            <fraction>logging</fraction>
+            <fraction>undertow</fraction>
+            <fraction>cdi</fraction>
+            <fraction>ejb</fraction>
+            <fraction>jaxrs</fraction>
+            <fraction>ee</fraction>
+            <fraction>security</fraction>
+            <fraction>management</fraction>
+            <fraction>datasources</fraction>
+          </fractions>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>package</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+
+      <plugin>
+        <groupId>io.thorntail</groupId>
+        <artifactId>thorntail-maven-plugin</artifactId>
+        <version>2.3.0.Final</version>
+        <executions>
+          <execution>
+            <id>package</id>
+            <!-- <goals> -->
+            <!-- <goal>package</goal> -->
+            <!-- </goals> -->
+          </execution>
+          <execution>
+            <id>start</id>
+          </execution>
+          <execution>
+            <id>stop</id>
           </execution>
         </executions>
       </plugin>

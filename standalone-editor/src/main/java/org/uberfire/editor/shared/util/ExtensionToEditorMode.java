@@ -14,41 +14,32 @@
  * limitations under the License.
  */
 
-package org.uberfire.editor.backend.service;
+package org.uberfire.editor.shared.util;
 
-import java.util.List;
-
-import org.uberfire.editor.client.shared.model.AssetContent;
+import org.uberfire.ext.widgets.common.client.ace.AceEditorMode;
 
 /**
  *
  */
-public interface AssetService {
-
-    public AssetContent getAssetContent(String assetURI);
+public class ExtensionToEditorMode {
 
     /**
-     * 
-     * List assets for a given repository in default space
-     * 
-     * @param repository The repository name
+     * @param type
      * @return
      */
-    public List<String> listAssets(String repository);
-
-    /**
-     * 
-     * List assets in default space and repository
-     * 
-     * @return
-     */
-    List<String> listAssets();
-
-    /**
-     * @param path
-     * @param content
-     * @return
-     */
-    public AssetContent saveAsset(String path, String content);
+    public static AceEditorMode fromExtension(String type) {
+        switch (type) {
+            case "java":
+                return AceEditorMode.JAVA;
+            case "js":
+                return AceEditorMode.JAVASCRIPT;
+            case "html":
+                return AceEditorMode.HTML;    
+            case "xml":
+                return AceEditorMode.XML;                 
+            default: 
+                return AceEditorMode.TEXT;
+        }
+    }
 
 }

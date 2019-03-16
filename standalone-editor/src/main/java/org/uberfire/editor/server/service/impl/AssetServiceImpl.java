@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.uberfire.editor.backend.service.impl;
+package org.uberfire.editor.server.service.impl;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -26,9 +26,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.uberfire.editor.backend.service.AssetService;
-import org.uberfire.editor.client.shared.conf.EditorDefinitions;
-import org.uberfire.editor.client.shared.model.AssetContent;
+import org.uberfire.editor.server.service.AssetService;
+import org.uberfire.editor.shared.conf.EditorDefinitions;
+import org.uberfire.editor.shared.model.AssetContent;
 import org.uberfire.io.IOService;
 import org.uberfire.java.nio.IOException;
 import org.uberfire.java.nio.file.FileSystem;

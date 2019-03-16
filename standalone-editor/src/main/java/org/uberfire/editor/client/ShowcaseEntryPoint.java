@@ -5,7 +5,7 @@ import javax.inject.Inject;
 
 import org.jboss.errai.enterprise.client.jaxrs.api.RestClient;
 import org.jboss.errai.ioc.client.api.EntryPoint;
-import org.uberfire.editor.client.local.screens.EditorPresenter;
+import org.uberfire.editor.client.screens.EditorPresenter;
 
 import com.google.gwt.animation.client.Animation;
 import com.google.gwt.dom.client.Element;

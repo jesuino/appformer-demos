@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.uberfire.editor.client.local.screens;
+package org.uberfire.editor.client.screens;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -25,8 +25,8 @@ import org.uberfire.client.annotations.WorkbenchPartTitle;
 import org.uberfire.client.annotations.WorkbenchPartView;
 import org.uberfire.client.annotations.WorkbenchScreen;
 import org.uberfire.client.mvp.UberElemental;
-import org.uberfire.editor.client.shared.AssetResource;
-import org.uberfire.editor.client.shared.model.AssetContent;
+import org.uberfire.editor.shared.AssetResource;
+import org.uberfire.editor.shared.model.AssetContent;
 
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;

@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package org.uberfire.editor.client.local.screens;
+package org.uberfire.editor.client.screens;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
@@ -24,12 +23,11 @@ import org.jboss.errai.common.client.api.elemental2.IsElement;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.EventHandler;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
+import org.uberfire.editor.shared.util.ExtensionToEditorMode;
 import org.uberfire.ext.widgets.common.client.ace.AceEditor;
 import org.uberfire.ext.widgets.common.client.ace.AceEditorMode;
 import org.uberfire.ext.widgets.common.client.ace.AceEditorTheme;
-import org.uberfire.shared.util.ExtensionToEditorMode;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.user.client.Window;

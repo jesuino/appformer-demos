@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.uberfire.editor.client.shared.conf;
+package org.uberfire.editor.shared.conf;
 
 import org.uberfire.spaces.Space;
 import org.uberfire.spaces.SpacesAPI;
