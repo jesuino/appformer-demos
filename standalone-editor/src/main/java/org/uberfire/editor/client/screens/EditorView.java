@@ -83,7 +83,7 @@ public class EditorView implements EditorPresenter.View, IsElement {
     @EventHandler("btnSave")
     public void saveContent(ClickEvent event) {
         try {
-            aceEditor.getElement().getStyle().setOpacity(0.4);
+            aceEditor.getElement().getStyle().setOpacity(0.2);
             aceEditor.setReadOnly(true);
             btnSave.disabled = true;
             presenter.saveContent(aceEditor.getText());
@@ -105,7 +105,7 @@ public class EditorView implements EditorPresenter.View, IsElement {
                 DomGlobal.console.error(e);
             }
         } else {
-            Window.alert("Provide the asset location using the query param asset");
+            Window.alert("Provide the asset location using the query param 'asset'");
         }
     }
 

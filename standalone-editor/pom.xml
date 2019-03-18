@@ -7,8 +7,7 @@
   <parent>
     <groupId>org.uberfire</groupId>
     <artifactId>uberfire-parent</artifactId>
-    <!-- Keep in sync with the parent version of dashbuilder-bom/pom.xml -->
-    <version>2.16.0-SNAPSHOT</version>
+    <version>2.17.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>standalone-editor</artifactId>
@@ -45,7 +44,7 @@
         <version>${kie.version}</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>      
+      </dependency>
       <dependency>
         <groupId>org.uberfire</groupId>
         <artifactId>uberfire-bom</artifactId>
@@ -224,55 +223,6 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- UberFire Security (Extension) -->
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-security-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-security-client</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-servlet-security</artifactId>
-    </dependency>
-
-    <!-- Uberfire Security Management -->
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-security-management-api</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-security-management-backend</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-security-management-wildfly</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-security-management-client</artifactId>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-widgets-security-management</artifactId>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-security-management-client-wb</artifactId>
-      <scope>provided</scope>
-    </dependency>
 
     <!-- Uberfire Experimentals -->
     <dependency>
@@ -291,18 +241,31 @@
       <scope>provided</scope>
     </dependency>
 
+
+    <!-- uberfire security -->
+
+    <dependency>
+      <groupId>org.uberfire</groupId>
+      <artifactId>uberfire-security-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.uberfire</groupId>
+      <artifactId>uberfire-security-client</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
     <!-- GWT and GWT Extensions -->
 
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
       <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>javax.servlet</groupId>
-          <artifactId>javax.servlet-api</artifactId>
-        </exclusion>
-      </exclusions>
+      <!-- <exclusions> -->
+      <!-- <exclusion> -->
+      <!-- <groupId>javax.servlet</groupId> -->
+      <!-- <artifactId>javax.servlet-api</artifactId> -->
+      <!-- </exclusion> -->
+      <!-- </exclusions> -->
     </dependency>
 
     <!-- Uberfire SSH -->
@@ -329,6 +292,21 @@
 
     <dependency>
       <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-security-server</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.jboss.resteasy</groupId>
+          <artifactId>resteasy-cdi</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.jboss.spec.javax.ws.rs</groupId>
+          <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
       <artifactId>errai-marshalling</artifactId>
     </dependency>
 
@@ -347,33 +325,6 @@
     <dependency>
       <groupId>org.jboss.errai</groupId>
       <artifactId>errai-ioc</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.jboss.errai</groupId>
-      <artifactId>errai-security-server</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.jboss.resteasy</groupId>
-          <artifactId>resteasy-jaxrs</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.jboss.resteasy</groupId>
-          <artifactId>resteasy-cdi</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
-    <dependency>
-      <groupId>org.jboss.errai</groupId>
-      <artifactId>errai-security-client</artifactId>
-      <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>javax.el</groupId>
-          <artifactId>el-api</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
 
     <dependency>
@@ -478,9 +429,9 @@
       <groupId>com.google.elemental2</groupId>
       <artifactId>elemental2-dom</artifactId>
     </dependency>
-    
+
     <!-- For security in swarm/thorntail -->
-   <dependency>
+    <dependency>
       <groupId>org.kie</groupId>
       <artifactId>kie-security</artifactId>
     </dependency>
@@ -496,8 +447,7 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
         <configuration>
-          <extraJvmArgs>-Xmx4024m -XX:CompileThreshold=7000
-            -Derrai.jboss.home=${errai.jboss.home}</extraJvmArgs>
+          <extraJvmArgs>-Xmx4024m -XX:CompileThreshold=7000 -Derrai.jboss.home=${errai.jboss.home}</extraJvmArgs>
           <strict>true</strict>
           <logLevel>INFO</logLevel>
           <noServer>false</noServer>
@@ -544,11 +494,10 @@
             <compileSourcesArtifact>org.uberfire:uberfire-ssh-client</compileSourcesArtifact>
             <compileSourcesArtifact>org.uberfire:uberfire-ssh-api</compileSourcesArtifact>
 
-            <!-- UberFire Security Management -->
-            <compileSourcesArtifact>org.uberfire:uberfire-security-management-api</compileSourcesArtifact>
-            <compileSourcesArtifact>org.uberfire:uberfire-security-management-client</compileSourcesArtifact>
-            <compileSourcesArtifact>org.uberfire:uberfire-security-management-client-wb</compileSourcesArtifact>
-            <compileSourcesArtifact>org.uberfire:uberfire-widgets-security-management</compileSourcesArtifact>
+            <!-- UberFire Security Management <compileSourcesArtifact>org.uberfire:uberfire-security-management-api</compileSourcesArtifact> 
+              <compileSourcesArtifact>org.uberfire:uberfire-security-management-client</compileSourcesArtifact> 
+              <compileSourcesArtifact>org.uberfire:uberfire-security-management-client-wb</compileSourcesArtifact> 
+              <compileSourcesArtifact>org.uberfire:uberfire-widgets-security-management</compileSourcesArtifact> -->
 
             <!-- Uberfire Experimentals -->
             <compileSourcesArtifact>org.uberfire:uberfire-experimental-api</compileSourcesArtifact>

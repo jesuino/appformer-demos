@@ -28,14 +28,14 @@ import org.uberfire.workbench.model.impl.PartDefinitionImpl;
 import org.uberfire.workbench.model.impl.PerspectiveDefinitionImpl;
 
 @ApplicationScoped
-@WorkbenchPerspective(identifier = "MainPerspective", isDefault = true)
-public class MainPerspective {
+@WorkbenchPerspective(identifier = "HomePerspective", isDefault = true)
+public class HomePerspective {
 
     @Perspective
     public PerspectiveDefinition buildPerspective() {
         final PerspectiveDefinitionImpl perspective = new PerspectiveDefinitionImpl(
                 SimpleWorkbenchPanelPresenter.class.getName());
-        perspective.setName("MainPerspective");
+        perspective.setName("HomePerspective");
 
         PartDefinition part = new PartDefinitionImpl(new DefaultPlaceRequest("EditorPresenter"));
         perspective.getRoot().addPart(part);

@@ -20,13 +20,10 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import org.jboss.errai.common.client.api.Caller;
 import org.uberfire.client.annotations.WorkbenchPartTitle;
 import org.uberfire.client.annotations.WorkbenchPartView;
 import org.uberfire.client.annotations.WorkbenchScreen;
 import org.uberfire.client.mvp.UberElemental;
-import org.uberfire.editor.shared.AssetResource;
-import org.uberfire.editor.shared.model.AssetContent;
 
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
@@ -36,10 +33,6 @@ import com.google.gwt.http.client.Response;
 import com.google.gwt.http.client.URL;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
-import com.google.gwt.safehtml.shared.UriUtils;
-import com.google.gwt.user.client.Window;
-
-import elemental2.dom.DomGlobal;
 
 @ApplicationScoped
 @WorkbenchScreen( identifier = "EditorPresenter" )
