@@ -260,12 +260,6 @@
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
       <scope>provided</scope>
-      <!-- <exclusions> -->
-      <!-- <exclusion> -->
-      <!-- <groupId>javax.servlet</groupId> -->
-      <!-- <artifactId>javax.servlet-api</artifactId> -->
-      <!-- </exclusion> -->
-      <!-- </exclusions> -->
     </dependency>
 
     <!-- Uberfire SSH -->
@@ -429,13 +423,6 @@
       <groupId>com.google.elemental2</groupId>
       <artifactId>elemental2-dom</artifactId>
     </dependency>
-
-    <!-- For security in swarm/thorntail -->
-    <dependency>
-      <groupId>org.kie</groupId>
-      <artifactId>kie-security</artifactId>
-    </dependency>
-
   </dependencies>
 
   <build>
@@ -493,11 +480,6 @@
             <compileSourcesArtifact>org.uberfire:uberfire-backend-api</compileSourcesArtifact>
             <compileSourcesArtifact>org.uberfire:uberfire-ssh-client</compileSourcesArtifact>
             <compileSourcesArtifact>org.uberfire:uberfire-ssh-api</compileSourcesArtifact>
-
-            <!-- UberFire Security Management <compileSourcesArtifact>org.uberfire:uberfire-security-management-api</compileSourcesArtifact> 
-              <compileSourcesArtifact>org.uberfire:uberfire-security-management-client</compileSourcesArtifact> 
-              <compileSourcesArtifact>org.uberfire:uberfire-security-management-client-wb</compileSourcesArtifact> 
-              <compileSourcesArtifact>org.uberfire:uberfire-widgets-security-management</compileSourcesArtifact> -->
 
             <!-- Uberfire Experimentals -->
             <compileSourcesArtifact>org.uberfire:uberfire-experimental-api</compileSourcesArtifact>
@@ -607,43 +589,15 @@
       </plugin>
 
       <plugin>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-plugin</artifactId>
-        <version>${version.org.wildfly.swarm}</version>
-        <configuration>
-          <fractionDetectMode>never</fractionDetectMode>
-          <fractions>
-            <fraction>logging</fraction>
-            <fraction>undertow</fraction>
-            <fraction>cdi</fraction>
-            <fraction>ejb</fraction>
-            <fraction>jaxrs</fraction>
-            <fraction>ee</fraction>
-            <fraction>security</fraction>
-            <fraction>management</fraction>
-            <fraction>datasources</fraction>
-          </fractions>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>package</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-
-      <plugin>
         <groupId>io.thorntail</groupId>
         <artifactId>thorntail-maven-plugin</artifactId>
         <version>2.3.0.Final</version>
         <executions>
           <execution>
             <id>package</id>
-            <!-- <goals> -->
-            <!-- <goal>package</goal> -->
-            <!-- </goals> -->
+            <goals>
+            <goal>package</goal>
+            </goals>
           </execution>
           <execution>
             <id>start</id>
