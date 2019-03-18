@@ -19,8 +19,6 @@
   <inherits
     name="org.uberfire.ext.preferences.UberfirePreferences" />
 
-  <!-- SSH -->
-  <inherits name="org.uberfire.ssh.UberfireSSHClient" />
   <!-- Experimental -->
   <inherits
     name="org.uberfire.experimental.UberfireExperimentalAPI" />
