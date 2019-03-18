@@ -485,10 +485,6 @@
             <compileSourcesArtifact>org.uberfire:uberfire-experimental-api</compileSourcesArtifact>
             <compileSourcesArtifact>org.uberfire:uberfire-experimental-client</compileSourcesArtifact>
 
-            <!-- Errai JAX-RS -->
-            <compileSourcesArtifact>org.jboss.errai:errai-jaxrs-client</compileSourcesArtifact>
-
-
           </compileSourcesArtifacts>
         </configuration>
         <executions>
@@ -598,12 +594,6 @@
             <goals>
             <goal>package</goal>
             </goals>
-          </execution>
-          <execution>
-            <id>start</id>
-          </execution>
-          <execution>
-            <id>stop</id>
           </execution>
         </executions>
       </plugin>
