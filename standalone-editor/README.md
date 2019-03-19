@@ -30,4 +30,4 @@ docker run -p 8080:8080 standalone-editor
 
 Once it is started access the editor using: `http://localhost:8080/index.html?asset=readme.md`
 
-If you want to try this application in your docker pull the image `jesuino/standalone-editor:latest`
+If you want to try the application there's a public docker image: https://quay.io/repository/wsiqueir/standalone-editor?tab=builds
