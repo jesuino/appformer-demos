@@ -28,7 +28,7 @@ import javax.ws.rs.Produces;
 import org.uberfire.editor.shared.model.AssetContent;
 
 /**
- *  Provide access to assets anywhere in a filesystem
+ *  Provide access to assets anywhere in uberfire git
  */
 @Path("/asset")
 @Produces("application/json;charset=utf-8")

@@ -91,7 +91,6 @@ public class EditorView implements EditorPresenter.View, IsElement {
             Window.alert("Error saving content: " + e.getMessage());
             DomGlobal.console.error(e);
         }
-        
     }
     
     private void getContentLocationAndLoad() {
@@ -100,12 +99,13 @@ public class EditorView implements EditorPresenter.View, IsElement {
         if (assetLocation != null) {
             try {
                 presenter.loadAsset(assetLocation);
+                Window.setTitle("Editing '" + assetLocation + "'");
             } catch (RequestException e) {
                 Window.alert("Not able to load asset " + e.getMessage());
                 DomGlobal.console.error(e);
             }
         } else {
-            Window.alert("Provide the asset location using the query param 'asset'");
+            Window.alert("Provide the asset location using the query param \"asset\".");
         }
     }
 

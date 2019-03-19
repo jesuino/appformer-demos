@@ -39,11 +39,9 @@ import com.google.gwt.json.client.JSONValue;
 public class EditorPresenter {
     
     public interface View extends UberElemental<EditorPresenter> {
+  
         void setContent(String type, String content);
 
-        /**
-         * @param string
-         */
         void showError(String string);
     }
 
